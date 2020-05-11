@@ -1,0 +1,3 @@
+[submodule "SubjectSystems/Catena/catena-java"]
+	path = SubjectSystems/Catena/catena-java
+	url = https://github.com/medsec/catena-java
