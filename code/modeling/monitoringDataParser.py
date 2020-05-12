@@ -11,23 +11,22 @@ from string import Template
 from joblib import Parallel, delayed
 import multiprocessing
 
-# PATHS
-# Absolute paths pointing to the measurement folders
+# Abolute paths
+# define hosenames and path to measurement results according to your local envoronment
 
 # print(socket.gethostname())
-
-if socket.gethostname() == 'darwin':
-    base_path = '/run/media/max/6650AF2E50AF0441/measurement_results/'
-    processed_data_root = '/run/media/max/6650AF2E50AF0441/experiment_data/'
-elif socket.gethostname() == 'intelli001':
-    base_path = '/home/max/raid/intelligent_software_systems/projects/green_configuration/' \
+if socket.gethostname() == '[name]':
+    base_path = '/run/media/[name]/6650AF2E50AF0441/measurement_results/'
+    processed_data_root = '/run/media/[name]/6650AF2E50AF0441/experiment_data/'
+elif socket.gethostname() == '[name]':
+    base_path = '/home/[name]/raid/[name]/projects/green_configuration/' \
                 'performance_hot_spot_detection/monitoring_results/'
-    processed_data_root = '/home/max/raid/intelligent_software_systems/projects/green_configuration/' \
+    processed_data_root = '/home/[name]/raid/intelligent_software_systems/projects/green_configuration/' \
                           'performance_hot_spot_detection/experiment_data/'
-elif socket.gethostname() == 'Max-Notebook':
-    base_path = '/home/mweber/projects/whiteboxPerformance/measurement_results/'
-    processed_data_root = '/home/mweber/projects/whiteboxPerformance/experiment_data/'
-    bash_template_string = '/home/mweber/jprofiler11/bin/jpexport ${input} HotSpots -format=csv ${output}'
+elif socket.gethostname() == '[name]':
+    base_path = '/home/[name]/projects/whiteboxPerformance/measurement_results/'
+    processed_data_root = '/home/[name]/projects/whiteboxPerformance/experiment_data/'
+    bash_template_string = '/home/[name]/jprofiler11/bin/jpexport ${input} HotSpots -format=csv ${output}'
 else:
     base_path = ''
     print('cant find hostname - base path empty.')
@@ -39,11 +38,6 @@ prevayler_root = base_path + 'prevayler/'
 pmd_root = base_path + 'pmd/'
 density_root = base_path + 'density-converter/'
 cpd_root = base_path + 'cpd/'
-
-# source of
-catena_root_dump = '/run/media/max/6650AF2E50AF0441/monitoring_results_alphaweb/catena/'
-sunflow_root_dump = '/run/media/max/6650AF2E50AF0441/monitoring_results_alphaweb/sunflow/'
-h2_root_dump = '/run/media/max/6650AF2E50AF0441/monitoring_results_alphaweb/h2/'
 
 # HELPER Methods
 methods_area_identifier = "| Most expensive methods (by net time)\n"
@@ -464,10 +458,7 @@ def read_repetitions(c_folder):
 
 def main():
     # MAIN
-    # catena_root, sunflow_root, h2_root, prevayler_root, pmd_root, density_root, cpd_root
-    # catena_root_dump, sunflow_root_dump, h2_root_dump
-    sub_sys = cpd_root
-
+    for sub_sys in [catena_root, sunflow_root, h2_root, prevayler_root, pmd_root, density_root, cpd_root]:
 
     # traverse folder hirarcy
     # sub_sys
@@ -476,22 +467,6 @@ def main():
     print()
     for sam_str in os.listdir(sub_sys):
         print('Start:', sam_str)
-
-        # if not sam_str == 'feature_pbd_125_5':
-        #     continue
-
-        # if not sam_str == 't_2_pbd_125_5':
-        #    continue
-
-        # if not sam_str == 't_2_pbd_49_7':
-        #    continue
-
-        # if not sam_str == 'feature_pbd_49_7':
-        #     continue
-
-        if not sam_str == 'rnd100':
-            continue
-
 
         sam_str_path = os.path.join(sub_sys, sam_str)
 

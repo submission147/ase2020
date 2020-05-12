@@ -6,7 +6,7 @@ PROFILER=$3
 PARTITION=$4
 
 # example call: ./start_slurm_run.sh
-#   /media/raid/max/performance_measurement_scripts/src/monitoring/samplingStrategies/catena/catena_config_feature_pbd_125_5.txt
+#   /media/raid/[name]/performance_measurement_scripts/src/monitoring/samplingStrategies/catena/catena_config_feature_pbd_125_5.txt
 #   5
 #   [None|jip|kieker|kieker_args]
 #   planck

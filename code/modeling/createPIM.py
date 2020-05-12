@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 np.random.seed(123456)
 
 
-experiment_path = '/run/media/max/6650AF2E50AF0441/experiment_data/'
+experiment_path = '/run/media/[name]/6650AF2E50AF0441/experiment_data/'
 
 
 # ---------------------------------------------------------------
@@ -455,7 +455,7 @@ def parse_config_cpd(cfg):
 
 def parse_config_density(cfg):
     # example:
-    # cfg-src_-media-raid-max-data-fosd1029-_-dst_-media-hdd-max-data_output-_
+    # cfg-src_-media-raid-[name]-data-fosd1029-_-dst_-media-hdd-[name]-data_output-_
     # -platform_android_
     # -outCompression_png_
     # -roundingMode_round_
@@ -613,7 +613,7 @@ def filter_methods(df, system, sampling):
     plt.ylabel('Relative Runtime in %')
     plt.title(' - '.join([system, sampling]))
     plt.show()
-    ax1.figure.savefig(''.join(['/home/max/meeting/18.07.2019/filter_difficult/', system, sampling, '.png']),
+    ax1.figure.savefig(''.join(['/home/[name]/meeting/18.07.2019/filter_difficult/', system, sampling, '.png']),
                        bbox_inches="tight")
 
 # ---------------------------------------------------------------
@@ -865,9 +865,9 @@ def main(plot_filter, similarity_analysis):
 
     if similarity_analysis:
         df = pd.DataFrame(inter_correlation_values, columns=['system', 'sampling', 'profiler', 'sim', 'value'])
-        df.to_pickle('/home/max/Desktop/correlation.pkl')
+        df.to_pickle('/home/[name]/Desktop/correlation.pkl')
 
-    correlation_analysis_data.to_pickle('/home/max/Desktop/correlation_raw_data.pkl')
+    correlation_analysis_data.to_pickle('/home/[name]/Desktop/correlation_raw_data.pkl')
 
 
 if __name__ == "__main__":
